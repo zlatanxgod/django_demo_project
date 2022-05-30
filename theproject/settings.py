@@ -35,11 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
+    "debug_toolbar",
     'django.contrib.staticfiles',
     'playground'
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +53,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'theproject.urls'
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
