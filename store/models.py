@@ -17,9 +17,16 @@ class Customer(models.Model):
         ('B',"BRONZE"),
         ('G',"GOLD")
     ]
+    first_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True) #only unique
     birth_date = models.DateField(null=True) # nullable
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_VALUES, default='B')
+
+    class Meta:
+        db_table = 'store_customers'
+        indexes = [
+            models.Index(fields=['first_name'])
+        ]
 
 class Address(models.Model):
     street = models.CharField(max_length=255)
